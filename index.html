@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enchanted Forest Adventure</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="game">
+    <header class="game-header">
+      <h1>Enchanted Forest</h1>
+      <div class="stats">
+        <span>🪙 Coins: <b id="coins">0</b></span>
+        <span>💎 Diamonds: <b id="diamonds">0</b></span>
+        <span>❤️ Strength: <b id="strength">100</b></span>
+      </div>
+    </header>
+
+    <main id="game-screen">
+      <div id="scene" class="forest">
+        <div class="moon"></div>
+        <div class="stars">✦　·　✧　　✦　·　✧</div>
+        <div class="forest-back">♠　♠　♠　♠　♠　♠</div>
+        <div class="mist"></div>
+
+        <div id="ground"></div>
+
+        <div id="creatures">
+          <span class="firefly">✦</span>
+          <span class="firefly">✧</span>
+          <span class="firefly">✦</span>
+        </div>
+
+        <div id="collectibles"></div>
+
+        <div id="monster" class="monster">👾</div>
+
+        <div id="player" class="player" aria-label="Adventurer">
+          <div class="hero">
+            <div class="hero-hat">♠</div>
+            <div class="hero-head">
+              <span class="hero-eyes">● ●</span>
+            </div>
+            <div class="hero-body"></div>
+            <div class="hero-legs">
+              <i></i><i></i>
+            </div>
+          </div>
+        </div>
+
+        <div id="portal" class="portal">
+          <span>✧</span>
+          <small>PORTAL</small>
+        </div>
+
+        <div id="message">Explore the enchanted forest!</div>
+      </div>
+    </main>
+
+    <section class="controls">
+      <button id="leftBtn" aria-label="Move left">◀</button>
+      <button id="jumpBtn">JUMP</button>
+      <button id="attackBtn">ATTACK</button>
+      <button id="rightBtn" aria-label="Move right">▶</button>
+    </section>
+
+    <p class="instructions">
+      Move with the arrows. Jump over danger, defeat monsters,
+      collect treasures and reach the portal.
+    </p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
