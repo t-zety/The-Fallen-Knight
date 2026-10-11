@@ -3,76 +3,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enchanted Forest Adventure</title>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>The Fallen Knight</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <div id="game">
-    <header class="game-header">
-      <h1>Enchanted Forest</h1>
+  <main id="game">
+    <header class="hud">
+      <div class="brand">
+        <span class="subtitle">A WHIMSICAL FANTASY</span>
+        <h1>The Fallen Knight</h1>
+      </div>
       <div class="stats">
-        <span>🪙 Coins: <b id="coins">0</b></span>
-        <span>💎 Diamonds: <b id="diamonds">0</b></span>
-        <span>❤️ Strength: <b id="strength">100</b></span>
+        <span>COINS <b id="coins">0</b></span>
+        <span>DIAMONDS <b id="diamonds">0</b></span>
+        <span>HEALTH <b id="health">100</b></span>
       </div>
     </header>
 
-    <main id="game-screen">
-      <div id="scene" class="forest">
-        <div class="moon"></div>
-        <div class="stars">✦　·　✧　　✦　·　✧</div>
-        <div class="forest-back">♠　♠　♠　♠　♠　♠</div>
-        <div class="mist"></div>
-
-        <div id="ground"></div>
-
-        <div id="creatures">
-          <span class="firefly">✦</span>
-          <span class="firefly">✧</span>
-          <span class="firefly">✦</span>
-        </div>
-
-        <div id="collectibles"></div>
-
-        <div id="monster" class="monster">👾</div>
-
-        <div id="player" class="player" aria-label="Adventurer">
-          <div class="hero">
-            <div class="hero-hat">♠</div>
-            <div class="hero-head">
-              <span class="hero-eyes">● ●</span>
-            </div>
-            <div class="hero-body"></div>
-            <div class="hero-legs">
-              <i></i><i></i>
-            </div>
-          </div>
-        </div>
-
-        <div id="portal" class="portal">
-          <span>✧</span>
-          <small>PORTAL</small>
-        </div>
-
-        <div id="message">Explore the enchanted forest!</div>
-      </div>
-    </main>
-
-    <section class="controls">
-      <button id="leftBtn" aria-label="Move left">◀</button>
-      <button id="jumpBtn">JUMP</button>
-      <button id="attackBtn">ATTACK</button>
-      <button id="rightBtn" aria-label="Move right">▶</button>
+    <section class="viewport">
+      <canvas id="world"
+        aria-label="The Fallen Knight fantasy adventure game">
+      </canvas>
+      <div id="notice">The forest is waiting for you...</div>
+      <div id="level">FOREST OF WHISPERS · LEVEL 1</div>
     </section>
 
-    <p class="instructions">
-      Move with the arrows. Jump over danger, defeat monsters,
-      collect treasures and reach the portal.
-    </p>
-  </div>
+    <nav class="controls" aria-label="Game controls">
+      <button id="left" aria-label="Move left">◀</button>
+      <button id="right" aria-label="Move right">▶</button>
+      <button id="jump">JUMP</button>
+      <button id="attack">ATTACK</button>
+    </nav>
 
+    <p class="help">
+      Move · Jump · Fight · Collect treasures · Discover new worlds
+    </p>
+  </main>
   <script src="script.js"></script>
 </body>
 </html>
