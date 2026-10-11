@@ -5,338 +5,104 @@
 
 body {
   margin: 0;
-  background: #090d20;
-  color: #f4edff;
+  min-height: 100vh;
+  background: #090b19;
+  color: #f4eaff;
   font-family: Georgia, serif;
-  text-align: center;
 }
 
 #game {
-  width: 100%;
-  max-width: 1000px;
+  width: min(100%, 1100px);
   margin: auto;
-  padding: 12px;
+  padding: 16px;
 }
 
-.game-header h1 {
-  color: #b9f4ff;
-  font-size: clamp(22px, 5vw, 36px);
-  text-shadow: 0 0 15px #42c9ff;
-  margin: 8px 0 14px;
+.hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.subtitle {
+  color: #91e8ee;
+  font: 10px Arial, sans-serif;
+  letter-spacing: 4px;
+}
+
+h1 {
+  margin: 6px 0;
+  font-size: clamp(23px, 5vw, 38px);
+  color: #f3e6ff;
+  text-shadow: 0 0 18px #9570ff88;
 }
 
 .stats {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 14px;
-  font-family: Arial, sans-serif;
-  font-size: 13px;
+  gap: 8px;
+  font: 11px Arial, sans-serif;
 }
 
 .stats span {
-  background: #1b2040;
-  border: 1px solid #555b91;
-  border-radius: 20px;
-  padding: 9px 12px;
+  padding: 10px;
+  border: 1px solid #494b78;
+  border-radius: 8px;
+  background: #171a32;
+  color: #aebde5;
 }
 
-#game-screen {
-  overflow: hidden;
-  border: 2px solid #6464a4;
-  border-radius: 14px;
+.stats b {
+  color: #a9f8ed;
+  margin-left: 5px;
 }
 
-#scene {
-  height: min(62vh, 470px);
-  min-height: 320px;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(
-    to bottom,
-    #101b42 0%,
-    #263b66 42%,
-    #28545a 75%,
-    #132d32 100%
-  );
-  transition: background 1s;
-}
-
-#scene.dimension-two {
-  background: linear-gradient(
-    to bottom,
-    #28163f,
-    #713b75 48%,
-    #d07889 78%,
-    #42274b
-  );
-}
-
-#scene.dimension-three {
-  background: linear-gradient(
-    to bottom,
-    #071b30,
-    #075d73 55%,
-    #163c4c 80%,
-    #101e32
-  );
-}
-
-.moon {
-  position: absolute;
-  width: 65px;
-  height: 65px;
-  top: 25px;
-  right: 13%;
-  border-radius: 50%;
-  background: #d6f8ff;
-  box-shadow: 0 0 35px #83eaff;
-}
-
-.stars {
-  position: absolute;
-  top: 12px;
-  left: 8%;
-  color: #d8ffff;
-  font-size: 22px;
-  letter-spacing: 8px;
-}
-
-.forest-back {
-  position: absolute;
-  top: 90px;
-  left: 0;
-  width: 100%;
-  color: #101f38;
-  font-size: clamp(55px, 12vw, 110px);
-  letter-spacing: -12px;
-  white-space: nowrap;
-  opacity: 0.9;
-}
-
-.mist {
-  position: absolute;
-  bottom: 65px;
-  width: 100%;
-  height: 90px;
-  background: linear-gradient(
-    transparent,
-    #9bdaed22,
-    transparent
-  );
-}
-
-#ground {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 75px;
-  background:
-    radial-gradient(ellipse at 20% 0%, #5b986b 0 5%, transparent 6%),
-    radial-gradient(ellipse at 65% 0%, #447e58 0 7%, transparent 8%),
-    linear-gradient(#244c3c, #102b2b);
-  border-top: 4px solid #70b17b;
-}
-
-#creatures {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.firefly {
-  position: absolute;
-  color: #b9ffff;
-  text-shadow: 0 0 12px #70faff;
-  animation: float 3s ease-in-out infinite alternate;
-}
-
-.firefly:nth-child(1) {
-  top: 38%;
-  left: 20%;
-}
-
-.firefly:nth-child(2) {
-  top: 55%;
-  left: 72%;
-  animation-delay: 1s;
-}
-
-.firefly:nth-child(3) {
-  top: 30%;
-  left: 48%;
-  animation-delay: 1.5s;
-}
-
-@keyframes float {
-  from { transform: translateY(0) scale(1); }
-  to { transform: translateY(-18px) scale(1.4); }
-}
-
-#collectibles {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.treasure {
-  position: absolute;
-  font-size: 24px;
-  filter: drop-shadow(0 0 8px #73faff);
-  animation: float 1.5s ease-in-out infinite alternate;
-}
-
-.player {
-  position: absolute;
-  bottom: 73px;
-  left: 10%;
-  width: 46px;
-  height: 76px;
-  z-index: 5;
-  transition: filter 0.1s;
-}
-
-.hero {
+.viewport {
   position: relative;
   width: 100%;
-  height: 100%;
-  animation: breathe 0.7s ease-in-out infinite alternate;
+  overflow: hidden;
+  border: 1px solid #6566a2;
+  border-radius: 12px;
+  background: #101b36;
+  box-shadow: 0 0 35px #29265b55;
 }
 
-.hero-hat {
-  position: absolute;
-  top: -9px;
-  left: 5px;
-  width: 37px;
-  height: 15px;
-  background: #8d6ae8;
-  border-radius: 80% 80% 20% 20%;
-  color: #e8d8ff;
-  font-size: 12px;
-}
-
-.hero-head {
-  position: absolute;
-  top: 5px;
-  left: 7px;
-  width: 32px;
-  height: 30px;
-  background: #ffd5ae;
-  border: 2px solid #392b4a;
-  border-radius: 45% 45% 42% 42%;
-}
-
-.hero-eyes {
+#world {
   display: block;
-  margin-top: 9px;
-  color: #29223a;
-  font-size: 8px;
-  letter-spacing: 5px;
+  width: 100%;
+  height: min(64vh, 500px);
+  min-height: 320px;
+  touch-action: none;
 }
 
-.hero-body {
-  position: absolute;
-  top: 33px;
-  left: 8px;
-  width: 30px;
-  height: 28px;
-  background: #b16ce0;
-  border: 2px solid #392b4a;
-  border-radius: 8px 8px 5px 5px;
-}
-
-.hero-legs {
-  position: absolute;
-  top: 57px;
-  left: 11px;
-  display: flex;
-  gap: 8px;
-}
-
-.hero-legs i {
-  width: 8px;
-  height: 17px;
-  background: #f3c6a1;
-  border: 2px solid #392b4a;
-  border-radius: 4px;
-}
-
-.player.facing-left {
-  transform: scaleX(-1);
-}
-
-.player.jumping {
-  filter: drop-shadow(0 0 12px #8efaff);
-}
-
-.player.attacking::after {
-  content: "✦";
-  position: absolute;
-  top: 10px;
-  right: -22px;
-  font-size: 32px;
-  color: #d6ffff;
-  text-shadow: 0 0 15px #56dfff;
-}
-
-@keyframes breathe {
-  from { transform: translateY(0); }
-  to { transform: translateY(-3px); }
-}
-
-.monster {
-  position: absolute;
-  bottom: 73px;
-  left: 55%;
-  font-size: 38px;
-  filter: drop-shadow(0 0 10px #ff83d4);
-  animation: float 1.3s ease-in-out infinite alternate;
-}
-
-.portal {
-  position: absolute;
-  right: 5%;
-  bottom: 65px;
-  width: 58px;
-  height: 92px;
-  border: 4px solid #9bfaff;
-  border-radius: 50% 50% 25% 25%;
-  background: #4ceaff22;
-  box-shadow: 0 0 15px #52eaff, inset 0 0 18px #52eaff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  animation: portal-glow 2s infinite alternate;
-}
-
-.portal span {
-  font-size: 25px;
-}
-
-.portal small {
-  font-size: 8px;
-  color: white;
-}
-
-@keyframes portal-glow {
-  from { box-shadow: 0 0 10px #52eaff; }
-  to { box-shadow: 0 0 28px #b4a1ff; }
-}
-
-#message {
+#notice {
   position: absolute;
   top: 12px;
   left: 50%;
   transform: translateX(-50%);
   width: max-content;
   max-width: 90%;
-  padding: 8px 12px;
-  background: #10152cbb;
-  border: 1px solid #8e8bcb;
-  border-radius: 12px;
-  font-size: 13px;
+  padding: 9px 13px;
+  border: 1px solid #a1b7d688;
+  border-radius: 7px;
+  background: #10172bdc;
+  color: #f0edff;
+  text-align: center;
+  font: 12px Arial, sans-serif;
+  pointer-events: none;
+}
+
+#level {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  color: #d2e9db;
+  font: 10px Arial, sans-serif;
+  letter-spacing: 2px;
+  text-shadow: 0 1px 5px #000;
+  pointer-events: none;
 }
 
 .controls {
@@ -344,51 +110,55 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
-  margin: 15px 0;
+  padding: 15px 0 8px;
 }
 
 .controls button {
-  min-width: 58px;
+  min-width: 62px;
   min-height: 48px;
-  padding: 10px 15px;
-  border: 1px solid #8c9dff;
-  border-radius: 12px;
+  padding: 10px 16px;
+  border: 1px solid #7779bd;
+  border-radius: 9px;
+  background: #202444;
   color: white;
-  background: #292d5a;
   font-weight: bold;
-  touch-action: manipulation;
+  font-size: 12px;
+  touch-action: none;
+  user-select: none;
 }
 
 .controls button:active {
-  background: #7655b8;
-  transform: scale(0.95);
+  background: #55428a;
+  transform: scale(.96);
 }
 
-#attackBtn {
-  background: #6d315e;
+#attack {
+  border-color: #a35f9d;
+  background: #472443;
 }
 
-.instructions {
-  color: #b9bfdc;
-  font: 12px/1.6 Arial, sans-serif;
+.help {
+  text-align: center;
+  color: #9299bb;
+  font: 11px/1.7 Arial, sans-serif;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 520px) {
   #game {
-    padding: 7px;
+    padding: 9px;
+  }
+
+  .hud {
+    display: block;
   }
 
   .stats {
-    gap: 5px;
+    margin-top: 12px;
   }
 
-  .stats span {
-    padding: 7px 9px;
-    font-size: 11px;
-  }
-
-  #scene {
-    min-height: 350px;
+  #world {
+    height: 52vh;
+    min-height: 320px;
   }
 
   .controls {
@@ -396,7 +166,7 @@ body {
   }
 
   .controls button {
-    min-width: 52px;
-    padding: 9px;
+    min-width: 54px;
+    padding: 10px;
   }
 }
